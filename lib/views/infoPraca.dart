@@ -31,7 +31,7 @@ class _InfoPracaViewState extends State<InfoPracaView> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   elevation: 3,
-                  backgroundColor: Color(0xFFF5F1E0),
+                  primary: Color(0xFFF5F1E0),
                 ),
                 onPressed: () {
                   Navigator.of(context)

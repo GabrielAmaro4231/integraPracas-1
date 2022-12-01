@@ -248,7 +248,7 @@ class BotaoVoltar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          primary: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
           side: BorderSide(color: Colors.black)),
       child: Text(

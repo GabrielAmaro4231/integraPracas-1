@@ -60,7 +60,7 @@ class LoginView extends StatelessWidget {
                         SizedBox(height: 30),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white,
+                              primary: Colors.white,
                               padding: EdgeInsets.symmetric(
                                   horizontal: 70, vertical: 25),
                               side: BorderSide(color: Color(0XFF7A9337))),

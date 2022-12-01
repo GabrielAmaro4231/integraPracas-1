@@ -7,7 +7,7 @@ class BotaoConfirmar extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.blue,
+            primary: Colors.blue,
             padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20)),
         child: const Text('Confirmar'),
         onPressed: () {});

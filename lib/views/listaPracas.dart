@@ -205,7 +205,7 @@ class SideDrawer extends StatelessWidget {
                                 actions: [
                                   TextButton(
                                       style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.white),
+                                          primary: Colors.white),
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
@@ -215,7 +215,7 @@ class SideDrawer extends StatelessWidget {
                                       )),
                                   TextButton(
                                       style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.white),
+                                          primary: Colors.white),
                                       onPressed: () async {
                                         await auth.currentUser!.delete();
                                         Navigator.of(context).pushNamed('/');
