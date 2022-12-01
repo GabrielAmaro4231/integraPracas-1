@@ -18,8 +18,10 @@ class _InfoPracaViewState extends State<InfoPracaView> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        centerTitle: true,
         title: Text(
           '${dadosPraca.nome}',
+          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
         ),
       ),
       body: Column(
@@ -52,7 +54,7 @@ class _InfoPracaViewState extends State<InfoPracaView> {
           Expanded(
             child: Container(
                 decoration: BoxDecoration(color: Color(0xFFF5F1E0)),
-                padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
+                // padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: StreamBuilder<QuerySnapshot>(
                     stream: _firestore
                         .collection('comentarios')
