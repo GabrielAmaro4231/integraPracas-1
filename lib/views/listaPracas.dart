@@ -23,9 +23,15 @@ class _ListaPracasState extends State<ListaPracas> {
         drawer: SideDrawer(),
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Praças'),
+          title: Text(
+            'Praças',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
           leading: IconButton(
-            icon: Icon(Icons.menu),
+            icon: Icon(
+              Icons.menu,
+              size: 35,
+            ),
             onPressed: () {
               _scaffoldKey.currentState!.openDrawer();
             },
@@ -45,67 +51,76 @@ class _ListaPracasState extends State<ListaPracas> {
                   itemBuilder: (_, index) {
                     var doc = snapshot.data!.docs[index];
                     return Container(
-                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                      height: 220,
+                      height: 184,
                       width: double.infinity,
-                      child: GestureDetector(
-                        onTap: () {
-                          var nomePraca = doc['nome'];
-                          var idPraca = doc.id;
-                          var capaPraca = doc['capa'];
-                          Navigator.of(context).pushNamed('/comments',
-                              arguments: Praca(
-                                  id: idPraca,
-                                  nome: nomePraca,
-                                  capa: capaPraca));
-                        },
-                        child: Card(
-                          elevation: 5,
-                          child: Row(
-                            children: [
-                              Flexible(
-                                flex: 1,
-                                child: Container(
-                                  width: 200,
-                                  height: 200,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: NetworkImage(doc['capa']),
-                                        fit: BoxFit.fill),
+                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                            // border: Border.all(color: Colors.purple),
+                            borderRadius: BorderRadius.circular(10)),
+                        child: GestureDetector(
+                          onTap: () {
+                            var nomePraca = doc['nome'];
+                            var idPraca = doc.id;
+                            var capaPraca = doc['capa'];
+                            Navigator.of(context).pushNamed('/comments',
+                                arguments: Praca(
+                                    id: idPraca,
+                                    nome: nomePraca,
+                                    capa: capaPraca));
+                          },
+                          child: Card(
+                            elevation: 5,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(13),
+                                      shape: BoxShape.rectangle,
+                                      image: DecorationImage(
+                                          image: NetworkImage(doc['capa']),
+                                          fit: BoxFit.cover),
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Flexible(
-                                flex: 1,
-                                child: Container(
-                                  height: double.infinity,
-                                  width: double.infinity,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(height: 20),
-                                      Container(
-                                        padding:
-                                            EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                        child: Center(
-                                          child: Text(doc['nome'],
-                                              style: TextStyle(
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold)),
-                                        ),
-                                      ),
-                                      Expanded(child: Container()),
-                                      Container(
+                                Flexible(
+                                  flex: 1,
+                                  child: Container(
+                                    height: double.infinity,
+                                    width: double.infinity,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
                                           padding:
-                                              EdgeInsets.fromLTRB(10, 0, 10, 0),
-                                          child: Text(doc['endereço'])),
-                                      Container(height: 50)
-                                    ],
+                                              EdgeInsets.fromLTRB(15, 10, 0, 0),
+                                          child: Center(
+                                            child: Text(doc['nome'],
+                                                style: TextStyle(
+                                                    fontSize: 16.0,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                          ),
+                                        ),
+                                        Expanded(child: Container()),
+                                        Container(
+                                          padding: EdgeInsets.fromLTRB(
+                                              15, 0, 10, 75),
+                                          child: Text(
+                                            doc['endereço'],
+                                            style: TextStyle(fontSize: 10.0),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
                       ),
