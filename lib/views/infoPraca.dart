@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:integrapracas/models/praca.dart';
+import 'package:integrapracas/views/cardComentario.dart';
 
 class InfoPracaView extends StatefulWidget {
   const InfoPracaView({Key? key}) : super(key: key);
@@ -72,56 +73,9 @@ class _InfoPracaViewState extends State<InfoPracaView> {
                           itemBuilder: (_, index) {
                             var doc = snapshot.data!.docs[index];
                             var categoria = doc['categoria'];
-                            return Card(
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  SizedBox(width: 20),
-                                  Expanded(
-                                    child: Container(
-                                      padding: EdgeInsets.all(10),
-                                      child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Container(
-                                                  child: Text(doc['usuario'],
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold)),
-                                                ),
-                                                Container(
-                                                    padding:
-                                                        EdgeInsets.fromLTRB(
-                                                            10, 0, 10, 0),
-                                                    decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            new BorderRadius
-                                                                    .all(
-                                                                Radius
-                                                                    .elliptical(
-                                                                        50,
-                                                                        50)),
-                                                        color:
-                                                            Colors.greenAccent),
-                                                    child: Text(categoria))
-                                              ],
-                                            ),
-                                            SizedBox(height: 15),
-                                            Container(
-                                                child: Text(doc['comentario'])),
-                                          ]),
-                                    ),
-                                  )
-                                ],
-                              ),
+                            return CardComentario(
+                              doc: doc,
+                              categoria: categoria,
                             );
                           });
                     })),
