@@ -78,7 +78,6 @@ class _ListaPracasState extends State<ListaPracas> {
                                   child: Container(
                                     width: 150,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(13),
                                       shape: BoxShape.rectangle,
                                       image: DecorationImage(
                                           image: NetworkImage(doc['capa']),

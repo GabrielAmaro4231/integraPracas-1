@@ -29,29 +29,30 @@ class _InfoPracaViewState extends State<InfoPracaView> {
         children: [
           Image.network(dadosPraca.capa),
           SizedBox(
-              height: 100,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 3,
-                  primary: Color(0xFFF5F1E0),
-                ),
-                onPressed: () {
-                  Navigator.of(context)
-                      .pushNamed('/selecionaCategoria', arguments: dadosPraca);
-                },
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.message,
-                      color: Colors.black,
-                    ),
-                    Text('Adicionar Comentário',
-                        style: TextStyle(color: Colors.black)),
-                  ],
-                ),
-              )),
+            height: 100,
+            width: double.infinity,
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                elevation: 3,
+                primary: Color(0xFFF5F1E0),
+              ),
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed('/selecionaCategoria', arguments: dadosPraca);
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(
+                    Icons.message,
+                    color: Colors.black,
+                  ),
+                  Text('Adicionar Comentário',
+                      style: TextStyle(color: Colors.black)),
+                ],
+              ),
+            ),
+          ),
           Expanded(
             child: Container(
                 decoration: BoxDecoration(color: Color(0xFFF5F1E0)),
