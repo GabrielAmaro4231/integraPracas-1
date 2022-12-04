@@ -13,11 +13,11 @@ class EventoPage extends StatefulWidget {
 class _EventoPageState extends State<EventoPage> {
   DateTime? date;
 
-  String getText(){
-    if (date == null){
+  String getText() {
+    if (date == null) {
       return "Selecione a data";
-    }else{
-        return '${date!.day}/${date!.month}/${date!.year}';
+    } else {
+      return '${date!.day}/${date!.month}/${date!.year}';
     }
   }
 
@@ -30,23 +30,20 @@ class _EventoPageState extends State<EventoPage> {
     var dataEvento = new TextEditingController();
     var tituloEvento = new TextEditingController();
     var dadosPraca = ModalRoute.of(context)!.settings.arguments as Praca;
-    
 
     Future _selectDate(BuildContext context) async {
-          final DateTime? picked = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2015, 8),
-            lastDate: DateTime(2101),
-            //locale: Locale('pt','BR')
-            );
-            
-        if (picked == null) return;
+      final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101),
+        //locale: Locale('pt','BR')
+      );
 
-        setState(() => date = picked);
-      }
+      if (picked == null) return;
 
-
+      setState(() => date = picked);
+    }
 
     return Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
@@ -56,83 +53,104 @@ class _EventoPageState extends State<EventoPage> {
           leading: BackButton(),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(children: [
-              Container(
-                padding: EdgeInsets.all(50),
-                child: Column(
-                  children: [Container(
-                        alignment: Alignment.centerLeft, child: Text('Título do evento:')),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.008,),
-                    TextFormField(
+            child: SingleChildScrollView(
+          child: Column(children: [
+            Container(
+              padding: EdgeInsets.all(50),
+              child: Column(
+                children: [
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Título do evento:')),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.008,
+                  ),
+                  TextFormField(
                       controller: tituloEvento,
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            focusColor: Color(0XFF7A9337),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0XFFBBCC8F), width: 2.0, style: BorderStyle.solid)))),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
-                    Container(
-                        alignment: Alignment.centerLeft, child: Text('Descrição do Evento:')),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.008,),
-                    TextFormField(
-                        controller: descricaoEvento,
-                        maxLines: 5,
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            filled: true,
-                            focusColor: Color(0XFF7A9337),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0XFFBBCC8F), width: 2.0)))),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.03,),
-                    Container(
-                        alignment: Alignment.centerLeft, child: Text('Data do evento:')),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.008,),
-                    TextFormField(
-                         onTap: () {
-                              _selectDate(context); 
-                        } ,
-                        controller: dataEvento,
-                        readOnly: true,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
+                      decoration: InputDecoration(
                           fillColor: Colors.white,
-                          hintText: getText(),
                           filled: true,
                           focusColor: Color(0XFF7A9337),
                           focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Color(0XFFBBCC8F), width: 2.0)),
-                          suffixIcon: Icon(Icons.calendar_today_outlined, color: Color(0XFF7A9337),),
-                        ),             
+                                  color: Color(0XFFBBCC8F),
+                                  width: 2.0,
+                                  style: BorderStyle.solid)))),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Descrição do Evento:')),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.008,
+                  ),
+                  TextFormField(
+                      controller: descricaoEvento,
+                      maxLines: 5,
+                      decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          focusColor: Color(0XFF7A9337),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Color(0XFFBBCC8F), width: 2.0)))),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Data do evento:')),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.008,
+                  ),
+                  TextFormField(
+                    onTap: () {
+                      _selectDate(context);
+                    },
+                    controller: dataEvento,
+                    readOnly: true,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      hintText: getText(),
+                      filled: true,
+                      focusColor: Color(0XFF7A9337),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color(0XFFBBCC8F), width: 2.0)),
+                      suffixIcon: Icon(
+                        Icons.calendar_today_outlined,
+                        color: Color(0XFF7A9337),
+                      ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
-                    ElevatedButton(
-                        style:
-                            ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
-                        child: const Text('Adicionar Comentário'),
-                        onPressed: () {
-                          db.collection('eventos').add({
-                            'usuario': user!.displayName,
-                            'userid': user.uid,
-                            'categoria': 'Evento',
-                            'descricaoEvento': descricaoEvento.text,
-                            'praca': dadosPraca.id,
-                            'timestamp': Timestamp.now(),
-                            'nomePraca': dadosPraca.nome,
-                            'dataEvento': date,
-                            'tituloEvento': tituloEvento.text
-                          });
-                          Navigator.pop(context);
-                        }),
-                  ],
-                ),
-              )
-            ]),
-          )
-      ));
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.08,
+                  ),
+                  ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
+                      child: const Text('Adicionar Comentário'),
+                      onPressed: () {
+                        db.collection('eventos').add({
+                          'usuario': user!.displayName,
+                          'userid': user.uid,
+                          'categoria': 'Evento',
+                          'descricaoEvento': descricaoEvento.text,
+                          'texto': descricaoEvento.text,
+                          'praca': dadosPraca.id,
+                          'timestamp': Timestamp.now(),
+                          'nomePraca': dadosPraca.nome,
+                          'dataEvento': date,
+                          'tituloEvento': tituloEvento.text
+                        });
+                        Navigator.pop(context);
+                      }),
+                ],
+              ),
+            )
+          ]),
+        )));
   }
 }

@@ -49,7 +49,7 @@ class CardComentario extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 15),
-                      Container(child: Text(doc['comentario'])),
+                      Container(child: Text(doc['texto'])),
                     ]),
               ),
             )
