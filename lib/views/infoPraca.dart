@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:integrapracas/models/praca.dart';
 import 'package:integrapracas/views/cardComentario.dart';
 
@@ -28,30 +29,66 @@ class _InfoPracaViewState extends State<InfoPracaView> {
       body: Column(
         children: [
           Image.network(dadosPraca.capa),
-          SizedBox(
-            height: 100,
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                elevation: 3,
-                primary: Color(0xFFF5F1E0),
-              ),
-              onPressed: () {
-                Navigator.of(context)
-                    .pushNamed('/selecionaCategoria', arguments: dadosPraca);
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.message,
-                    color: Colors.black,
+          Container(
+            padding: EdgeInsets.fromLTRB(40, 0, 40, 0),
+            child: SizedBox(
+                height: 100,
+                width: double.infinity,
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: GestureDetector(
+                          onTap: () {
+                            print("Sugestão de Melhorias!");
+                          },
+                          child: Container(
+                            // color: Colors.purple,
+                            child: Icon(
+                              Icons.upgrade,
+                              size: 40,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: GestureDetector(
+                          onTap: () {
+                            print("Manutenção!");
+                          },
+                          child: Container(
+                            // color: Colors.purple,
+                            child: Icon(
+                              Icons.construction,
+                              size: 40,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        fit: FlexFit.tight,
+                        child: GestureDetector(
+                          onTap: () {
+                            print("Evento!");
+                          },
+                          child: Container(
+                            // color: Colors.purple,
+                            child: Icon(
+                              Icons.celebration,
+                              size: 40,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Text('Adicionar Comentário',
-                      style: TextStyle(color: Colors.black)),
-                ],
-              ),
-            ),
+                )),
           ),
           Expanded(
             child: Container(
@@ -59,7 +96,7 @@ class _InfoPracaViewState extends State<InfoPracaView> {
                 // padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: StreamBuilder<QuerySnapshot>(
                     stream: _firestore
-                        .collection('comentarios')
+                        .collection('eventos')
                         .where('praca', isEqualTo: dadosPraca.id)
                         .snapshots(),
                     builder: (_, snapshot) {
@@ -82,6 +119,14 @@ class _InfoPracaViewState extends State<InfoPracaView> {
                     })),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context)
+              .pushNamed('/selecionaCategoria', arguments: dadosPraca);
+        },
+        backgroundColor: Colors.brown,
+        child: const Icon(Icons.add),
       ),
     );
   }
