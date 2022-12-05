@@ -25,7 +25,7 @@ class UserComments extends StatelessWidget {
                 padding: EdgeInsets.fromLTRB(0, 20, 0, 0),
                 child: StreamBuilder<QuerySnapshot>(
                     stream: _firestore
-                        .collection('comentarios')
+                        .collection('eventos')
                         .where('userid', isEqualTo: auth.currentUser!.uid)
                         .snapshots(),
                     builder: (_, snapshot) {
@@ -49,7 +49,7 @@ class UserComments extends StatelessWidget {
                                       backgroundColor: Colors.red,
                                       onPressed: (buildContext) {
                                         _firestore
-                                            .collection("comentarios")
+                                            .collection("eventos")
                                             .doc(doc.id)
                                             .delete();
                                       })
@@ -82,27 +82,27 @@ class UserComments extends StatelessWidget {
                                                                     .bold)),
                                                   ),
                                                   Container(
-                                                      padding:
-                                                          EdgeInsets.all(5),
-                                                      decoration: BoxDecoration(
-                                                          borderRadius:
-                                                              new BorderRadius
-                                                                      .all(
-                                                                  Radius.elliptical(
-                                                                      50, 50)),
-                                                          color: Colors
-                                                              .greenAccent),
-                                                      child: Text(
-                                                          doc['categoria'],
-                                                          style: TextStyle(
-                                                              color: Colors
-                                                                  .black)))
+                                                    padding: EdgeInsets.all(5),
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            new BorderRadius
+                                                                    .all(
+                                                                Radius
+                                                                    .elliptical(
+                                                                        5, 5)),
+                                                        color: Colors.brown),
+                                                    child: Text(
+                                                      doc['categoria'],
+                                                      style: TextStyle(
+                                                        color: Colors.white,
+                                                      ),
+                                                    ),
+                                                  )
                                                 ],
                                               ),
                                               SizedBox(height: 12),
                                               Container(
-                                                  child:
-                                                      Text(doc['comentario'])),
+                                                  child: Text(doc['texto'])),
                                               SizedBox(height: 20),
                                               Container(
                                                   child: Text(

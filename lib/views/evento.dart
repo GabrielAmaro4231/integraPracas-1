@@ -49,7 +49,10 @@ class _EventoPageState extends State<EventoPage> {
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Evento'),
+          title: Text(
+            'Evento',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+          ),
           leading: BackButton(),
         ),
         body: SafeArea(

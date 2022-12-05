@@ -18,58 +18,65 @@ class ManutencaoPage extends StatelessWidget {
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Manutenção'),
+          title: Text(
+            'Manutenção',
+            style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+          ),
           leading: BackButton(),
         ),
-        body: Column(children: [
-          Container(
-            padding: EdgeInsets.all(50),
-            child: Column(
-              children: [
-                //Container(
-                //alignment: Alignment.centerLeft,
-                // child: Text('Categoria')),
-                //SizedBox(height: 3),
-                //Categorias(),
-                //SizedBox(height: 50),
-                Container(
-                    alignment: Alignment.centerLeft,
-                    child: Text('Descreva a manutenção a ser realizada:')),
-                SizedBox(height: 3),
-                TextFormField(
-                    controller: comentarioPraca,
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        filled: true,
-                        focusColor: Color(0XFF7A9337),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Color(0XFFBBCC8F), width: 2.0)))),
-                SizedBox(height: 80),
-                ElevatedButton(
-                    style:
-                        ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
-                    child: const Text('Adicionar Comentário'),
-                    onPressed: () {
-                      db.collection('manutencao').add({
-                        'usuario': user!.displayName,
-                        'userid': user.uid,
-                        'categoria': 'Manutenção',
-                        //Provider.of<ValueCategoria>(context, listen: false)
-                        //.getCategoriaValue,
-                        'texto': comentarioPraca.text,
-                        'praca': dadosPraca.id,
-                        'timestamp': Timestamp.now(),
-                        'nomePraca': dadosPraca.nome
-                      });
-                      Navigator.of(context)
-                          .pushNamed('/comments', arguments: dadosPraca);
-                    }),
-              ],
-            ),
-          )
-        ]));
+        body: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(children: [
+              Container(
+                padding: EdgeInsets.all(50),
+                child: Column(
+                  children: [
+                    //Container(
+                    //alignment: Alignment.centerLeft,
+                    // child: Text('Categoria')),
+                    //SizedBox(height: 3),
+                    //Categorias(),
+                    //SizedBox(height: 50),
+                    Container(
+                        alignment: Alignment.centerLeft,
+                        child: Text('Descreva a manutenção a ser realizada:')),
+                    SizedBox(height: 3),
+                    TextFormField(
+                        controller: comentarioPraca,
+                        maxLines: 5,
+                        decoration: InputDecoration(
+                            fillColor: Colors.white,
+                            filled: true,
+                            focusColor: Color(0XFF7A9337),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0XFFBBCC8F), width: 2.0)))),
+                    SizedBox(height: 80),
+                    ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.all(30)),
+                        child: const Text('Adicionar Comentário'),
+                        onPressed: () {
+                          db.collection('manutencao').add({
+                            'usuario': user!.displayName,
+                            'userid': user.uid,
+                            'categoria': 'Manutenção',
+                            //Provider.of<ValueCategoria>(context, listen: false)
+                            //.getCategoriaValue,
+                            'texto': comentarioPraca.text,
+                            'praca': dadosPraca.id,
+                            'timestamp': Timestamp.now(),
+                            'nomePraca': dadosPraca.nome
+                          });
+                          Navigator.of(context)
+                              .pushNamed('/comments', arguments: dadosPraca);
+                        }),
+                  ],
+                ),
+              )
+            ]),
+          ),
+        ));
   }
 }
 

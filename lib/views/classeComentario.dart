@@ -10,7 +10,10 @@ class ClasseComentario extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Selecione a categoria"),
+        title: Text(
+          "Selecione a categoria",
+          style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
       ),
       backgroundColor: Color(0xFFF5F1E0),
@@ -33,7 +36,7 @@ class ClasseComentario extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('EVENTO',
-                        style: TextStyle(color: Colors.black, fontSize: 18)),
+                        style: TextStyle(color: Colors.white, fontSize: 18)),
                   ],
                 ),
               ),
@@ -58,7 +61,7 @@ class ClasseComentario extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text("MANUTENÇÃO",
-                        style: TextStyle(color: Colors.black, fontSize: 18)),
+                        style: TextStyle(color: Colors.white, fontSize: 18)),
                   ],
                 ),
               ),
@@ -84,7 +87,7 @@ class ClasseComentario extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text('SUGESTÃO DE MELHORIA',
-                        style: TextStyle(color: Colors.black, fontSize: 18)),
+                        style: TextStyle(color: Colors.white, fontSize: 18)),
                   ],
                 ),
               ),

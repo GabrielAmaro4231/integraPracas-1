@@ -19,11 +19,15 @@ class _InfoPracaViewState extends State<InfoPracaView> {
     var dadosPraca = ModalRoute.of(context)!.settings.arguments as Praca;
 
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 3,
       child: Scaffold(
         backgroundColor: Theme.of(context).backgroundColor,
         appBar: AppBar(
+          leading: new IconButton(
+            icon: new Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pushNamed('/pracas'),
+          ),
           centerTitle: true,
           title: Text(
             '${dadosPraca.nome}',

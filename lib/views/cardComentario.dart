@@ -40,12 +40,18 @@ class CardComentario extends StatelessWidget {
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                           ),
                           Container(
-                              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                              decoration: BoxDecoration(
-                                  borderRadius: new BorderRadius.all(
-                                      Radius.elliptical(50, 50)),
-                                  color: Colors.greenAccent),
-                              child: Text(categoria))
+                            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                            decoration: BoxDecoration(
+                                borderRadius: new BorderRadius.all(
+                                    Radius.elliptical(5, 5)),
+                                color: Colors.brown),
+                            child: Text(
+                              categoria,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                       SizedBox(height: 15),
