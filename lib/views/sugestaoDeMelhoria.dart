@@ -2,9 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:integrapracas/models/praca.dart';
+import 'package:provider/provider.dart';
 
-class ComentarioPraca extends StatelessWidget {
-  const ComentarioPraca({Key? key}) : super(key: key);
+class MelhoriaPage extends StatelessWidget {
+  const MelhoriaPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +28,14 @@ class ComentarioPraca extends StatelessWidget {
             child: Column(
               children: [
                 //Container(
-                    //alignment: Alignment.centerLeft, 
-                   // child: Text('Categoria')),
+                //alignment: Alignment.centerLeft,
+                // child: Text('Categoria')),
                 //SizedBox(height: 3),
                 //Categorias(),
                 //SizedBox(height: 50),
                 Container(
-                    alignment: Alignment.centerLeft, child: Text('Descreva a sugestão de melhoria:')),
+                    alignment: Alignment.centerLeft,
+                    child: Text('Descreva a sugestão de melhoria:')),
                 SizedBox(height: 3),
                 TextFormField(
                     controller: comentarioPraca,
@@ -51,18 +53,19 @@ class ComentarioPraca extends StatelessWidget {
                         ElevatedButton.styleFrom(padding: EdgeInsets.all(30)),
                     child: const Text('Adicionar Comentário'),
                     onPressed: () {
-                      db.collection('comentarios').add({
+                      db.collection('melhorias').add({
                         'usuario': user!.displayName,
                         'userid': user.uid,
                         'categoria': 'Sugetão de Melhoria',
-                            //Provider.of<ValueCategoria>(context, listen: false)
-                                //.getCategoriaValue,
-                        'comentario': comentarioPraca.text,
+                        //Provider.of<ValueCategoria>(context, listen: false)
+                        //.getCategoriaValue,
+                        'texto': comentarioPraca.text,
                         'praca': dadosPraca.id,
                         'timestamp': Timestamp.now(),
                         'nomePraca': dadosPraca.nome
                       });
-                      Navigator.pop(context);
+                      Navigator.of(context)
+                          .pushNamed('/comments', arguments: dadosPraca);
                     }),
               ],
             ),
@@ -71,44 +74,44 @@ class ComentarioPraca extends StatelessWidget {
   }
 }
 
-//class Categorias extends StatefulWidget {
-  //const Categorias({Key? key}) : super(key: key);
+// class Categorias extends StatefulWidget {
+// const Categorias({Key? key}) : super(key: key);
 
- // @override
-  //_CategoriasState createState() => _CategoriasState();
-//}
+// @override
+// _CategoriasState createState() => _CategoriasState();
+// }
 
-//class _CategoriasState extends State<Categorias> {
-  //@override
-  //Widget build(BuildContext context) {
-    //String? categoriaValue;
-    //return DropdownButtonFormField<String>(
-      //value:
-       //   Provider.of<ValueCategoria>(context, listen: false).getCategoriaValue,
-     // items: ["Manutenção", "Sugestão de Melhoria", "Evento"]
-        //  .map((label) => DropdownMenuItem(
-       //         child: Text(label),
-       //         value: label,
-     //         ))
-   //       .toList(),
- //     onChanged: (value) {
-  //      Provider.of<ValueCategoria>(context, listen: false)
+// class _CategoriasState extends State<Categorias> {
+// @override
+// Widget build(BuildContext context) {
+// String? categoriaValue;
+// return DropdownButtonFormField<String>(
+// value:
+//   Provider.of<ValueCategoria>(context, listen: false).getCategoriaValue,
+// items: ["Manutenção", "Sugestão de Melhoria", "Evento"]
+//  .map((label) => DropdownMenuItem(
+//         child: Text(label),
+//         value: label,
+//         ))
+//       .toList(),
+//     onChanged: (value) {
+//      Provider.of<ValueCategoria>(context, listen: false)
 //            .setCategoriaValue(value);
-        //setState(() {
-        //  categoriaValue = value!;
-      //  });
-    //  },
-   // );
- // }
-//}
+// setState(() {
+//  categoriaValue = value!;
+//  });
+//  },
+// );
+// }
+// }
 
-//class ValueCategoria extends ChangeNotifier {
-  //String? categoriaValue;
+// class ValueCategoria extends ChangeNotifier {
+// String? categoriaValue;
 
-  //String? get getCategoriaValue => this.categoriaValue;
+// String? get getCategoriaValue => this.categoriaValue;
 
-  //void setCategoriaValue(String? value) {
-   // this.categoriaValue = value;
-   // notifyListeners();
- // }
-//}
+// void setCategoriaValue(String? value) {
+// this.categoriaValue = value;
+// notifyListeners();
+// }
+// }

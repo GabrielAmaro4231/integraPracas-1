@@ -52,7 +52,7 @@ class ClasseComentario extends StatelessWidget {
                         MediaQuery.of(context).size.height * 0.15)),
                 onPressed: () {
                   Navigator.of(context)
-                      .pushNamed('/addcomment', arguments: dadosPraca);
+                      .pushNamed('/add-manutencao', arguments: dadosPraca);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

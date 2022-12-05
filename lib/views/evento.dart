@@ -61,6 +61,36 @@ class _EventoPageState extends State<EventoPage> {
                 children: [
                   Container(
                       alignment: Alignment.centerLeft,
+                      child: Text('Data do evento:')),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.008,
+                  ),
+                  TextFormField(
+                    onTap: () {
+                      _selectDate(context);
+                    },
+                    controller: dataEvento,
+                    readOnly: true,
+                    textAlign: TextAlign.center,
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      hintText: getText(),
+                      filled: true,
+                      focusColor: Color(0XFF7A9337),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(color: Color(0XFFBBCC8F), width: 2.0)),
+                      suffixIcon: Icon(
+                        Icons.calendar_today_outlined,
+                        color: Color(0XFF7A9337),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.03,
+                  ),
+                  Container(
+                      alignment: Alignment.centerLeft,
                       child: Text('Título do evento:')),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.008,
@@ -96,36 +126,6 @@ class _EventoPageState extends State<EventoPage> {
                               borderSide: BorderSide(
                                   color: Color(0XFFBBCC8F), width: 2.0)))),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
-                  ),
-                  Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text('Data do evento:')),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.008,
-                  ),
-                  TextFormField(
-                    onTap: () {
-                      _selectDate(context);
-                    },
-                    controller: dataEvento,
-                    readOnly: true,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      hintText: getText(),
-                      filled: true,
-                      focusColor: Color(0XFF7A9337),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Color(0XFFBBCC8F), width: 2.0)),
-                      suffixIcon: Icon(
-                        Icons.calendar_today_outlined,
-                        color: Color(0XFF7A9337),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
                     height: MediaQuery.of(context).size.height * 0.08,
                   ),
                   ElevatedButton(
@@ -137,7 +137,6 @@ class _EventoPageState extends State<EventoPage> {
                           'usuario': user!.displayName,
                           'userid': user.uid,
                           'categoria': 'Evento',
-                          'descricaoEvento': descricaoEvento.text,
                           'texto': descricaoEvento.text,
                           'praca': dadosPraca.id,
                           'timestamp': Timestamp.now(),
@@ -145,7 +144,8 @@ class _EventoPageState extends State<EventoPage> {
                           'dataEvento': date,
                           'tituloEvento': tituloEvento.text
                         });
-                        Navigator.pop(context);
+                        Navigator.of(context)
+                            .pushNamed('/comments', arguments: dadosPraca);
                       }),
                 ],
               ),

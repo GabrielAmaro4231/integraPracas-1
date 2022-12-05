@@ -4,6 +4,7 @@ import 'package:integrapracas/views/alterarSenha.dart';
 import 'package:integrapracas/views/cadastro.dart';
 import 'package:integrapracas/views/classeComentario.dart';
 import 'package:integrapracas/views/evento.dart';
+import 'package:integrapracas/views/manutencao.dart';
 import 'package:integrapracas/views/sugestaoDeMelhoria.dart';
 import 'package:integrapracas/views/infoPraca.dart';
 import 'package:integrapracas/views/listaPracas.dart';
@@ -36,8 +37,9 @@ class App extends StatelessWidget {
         '/redefinir-senha': (context) => RedefinirSenha(),
         '/alteraSenha': (context) => AlteraSenha(),
         '/pracas': (context) => ListaPracas(),
-        '/add-melhoria': (context) => ComentarioPraca(),
+        '/add-melhoria': (context) => MelhoriaPage(),
         '/add-evento': (context) => EventoPage(),
+        '/add-manutencao': (context) => ManutencaoPage(),
         '/selecionaCategoria': (context) => ClasseComentario(),
         '/comments': (context) => InfoPracaView(),
         '/my-comments': (context) => UserComments()
